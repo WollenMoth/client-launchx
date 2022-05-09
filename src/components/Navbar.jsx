@@ -23,6 +23,9 @@ function Navbar(props) {
             <LinkContainer to="/commanders">
               <Nav.Link>Commanders</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/commanders/new">
+              <Nav.Link>Agregar Commander</Nav.Link>
+            </LinkContainer>
           </Nav>
         </BaseNavbar.Collapse>
       </Container>

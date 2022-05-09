@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import ExplorersList from "./components/ExplorersList";
 import ExplorerForm from "./components/ExplorerForm";
 import CommandersList from "./components/CommandersList";
+import CommanderForm from "./components/CommanderForm";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/explorers" element={<ExplorersList />} />
           <Route path="/explorers/:id" element={<ExplorerForm />} />
           <Route path="/commanders" element={<CommandersList />} />
+          <Route path="/commanders/:id" element={<CommanderForm />} />
           <Route path="/" element={<CommandersList />} />
         </Routes>
       </Container>
