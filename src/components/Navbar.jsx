@@ -13,7 +13,11 @@ function Navbar(props) {
         </LinkContainer>
         <BaseNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BaseNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto"></Nav>
+          <Nav className="me-auto">
+            <LinkContainer to="/explorers">
+              <Nav.Link>Explorers</Nav.Link>
+            </LinkContainer>
+          </Nav>
         </BaseNavbar.Collapse>
       </Container>
     </BaseNavbar>
