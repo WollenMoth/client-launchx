@@ -17,7 +17,7 @@ axios.interceptors.response.use(null, (error) => {
 });
 
 export default axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://explorers-api.herokuapp.com/",
   headers: {
     "Content-Type": "application/json",
   },
