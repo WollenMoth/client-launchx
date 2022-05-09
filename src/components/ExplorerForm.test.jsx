@@ -42,4 +42,10 @@ describe("Unit Tests for ExplorerForm", () => {
     const updateButton = screen.getByRole("button", { name: /Actualizar/i });
     expect(updateButton).toBeInTheDocument();
   });
+
+  test("renders delete button if editing an explorer", () => {
+    renderInRoute(ExplorerForm, "/explorers/:id", "/explorers/1");
+    const deleteButton = screen.getByRole("button", { name: /Eliminar/i });
+    expect(deleteButton).toBeInTheDocument();
+  });
 });

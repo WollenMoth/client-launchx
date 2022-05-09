@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./ExplorerForm.css";
 import {
   createExplorer,
+  deleteExplorer,
   getExplorer,
   updateExplorer,
 } from "../services/explorerService";
@@ -59,6 +60,16 @@ function ExplorerForm(props) {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await deleteExplorer(id);
+      window.location = "/explorers";
+    } catch (error) {
+      if (error.response && error.response.status === 400)
+        toast.error(error.response.data.detail);
+    }
+  };
+
   if (created)
     return (
       <Fragment>
@@ -104,9 +115,14 @@ function ExplorerForm(props) {
             Agregar
           </Button>
         ) : (
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Actualizar
-          </Button>
+          <Fragment>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              Actualizar
+            </Button>{" "}
+            <Button variant="danger" onClick={handleDelete}>
+              Eliminar
+            </Button>
+          </Fragment>
         )}
         {updated && (
           <Fragment>
