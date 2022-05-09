@@ -6,7 +6,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 function Navbar(props) {
   return (
-    <BaseNavbar bg="dark" variant="dark" expand="lg">
+    <BaseNavbar bg="dark" variant="dark" expand="lg" className="mb-3">
       <Container>
         <LinkContainer to="/">
           <BaseNavbar.Brand>Launch X</BaseNavbar.Brand>
