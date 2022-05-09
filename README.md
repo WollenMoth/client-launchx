@@ -13,6 +13,13 @@ Nos permite ver detalles de los explorers, editarlos, eliminarlos, y [crear nuev
 El cliente proporciona acceso al endpoint de [Commanders](https://client-launchx.herokuapp.com/commanders) de la API.
 Nos permite ver detalles de los commanders, editarlos, eliminarlos, y [crear nuevos commanders](https://client-launchx.herokuapp.com/commanders/new).
 
+## Instalación
+
+- Clona el proyecto
+- Instala las dependencias con `npm install`
+- Ejecuta el proyecto con `npm start`
+- Ejecuta las pruebas con `npm test`
+
 ## Dependencias
 
 - Axios: Para realizar las peticiones HTTP.
@@ -23,4 +30,3 @@ Nos permite ver detalles de los commanders, editarlos, eliminarlos, y [crear nue
 - React Router Bootstrap: Para crear links del React Router en componentes de Bootstrap.
 - React Toastify: Para mostrar toasts en la aplicación.
 - Sentry: Para reportar errores en la aplicación.
-
