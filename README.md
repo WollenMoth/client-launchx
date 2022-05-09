@@ -20,6 +20,8 @@ Nos permite ver detalles de los commanders, editarlos, eliminarlos, y [crear nue
 - Ejecuta el proyecto con `npm start`
 - Ejecuta las pruebas con `npm test`
 
+![installation_instructions](https://user-images.githubusercontent.com/27463216/167512360-c0681484-ac9e-4141-8d00-d00c553d9b43.png)
+
 ## Dependencias
 
 - Axios: Para realizar las peticiones HTTP.
