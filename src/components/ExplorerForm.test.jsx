@@ -28,4 +28,18 @@ describe("Unit Tests for ExplorerForm", () => {
     const addButton = screen.getByRole("button", { name: /Agregar/i });
     expect(addButton).toBeInTheDocument();
   });
+
+  test("fields are disabled if editing an explorer", () => {
+    renderInRoute(ExplorerForm, "/explorers/:id", "/explorers/1");
+    const name = screen.getByRole("textbox", { name: /Nombre/i });
+    const username = screen.getByRole("textbox", { name: /Username/i });
+    expect(name).toBeDisabled();
+    expect(username).toBeDisabled();
+  });
+
+  test("renders update button if editing an explorer", () => {
+    renderInRoute(ExplorerForm, "/explorers/:id", "/explorers/1");
+    const updateButton = screen.getByRole("button", { name: /Actualizar/i });
+    expect(updateButton).toBeInTheDocument();
+  });
 });

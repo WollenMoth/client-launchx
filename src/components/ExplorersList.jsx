@@ -3,7 +3,9 @@ import { toast } from "react-toastify";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 import { getExplorers } from "../services/explorerService";
+import { LinkContainer } from "react-router-bootstrap";
 
 function ExplorersList(props) {
   const [explorers, setExplorers] = useState([]);
@@ -58,6 +60,13 @@ function ExplorersList(props) {
                 <strong>Mission:</strong>
               </label>{" "}
               {currentExplorer.mission}
+              <br />
+              <LinkContainer
+                to={`/explorers/${currentExplorer.id}`}
+                className="mt-2"
+              >
+                <Button variant="primary">Editar</Button>
+              </LinkContainer>
             </div>
           </Fragment>
         ) : (
