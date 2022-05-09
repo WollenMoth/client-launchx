@@ -1,13 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./CommanderForm.css";
-import { createCommander } from "../services/commanderService";
+import {
+  createCommander,
+  getCommander,
+  updateCommander,
+} from "../services/commanderService";
 
 function CommanderForm(props) {
   const [created, setCreated] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const [commander, setCommander] = useState({
     name: "",
     username: "",
@@ -16,6 +21,19 @@ function CommanderForm(props) {
 
   const { id } = useParams();
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getCommander(id);
+        setCommander(result.data);
+      } catch (error) {
+        if (error.response && error.response.status === 400)
+          toast.error(error.response.data.detail);
+      }
+    }
+    if (id !== "new") fetchData();
+  }, [id]);
+
   const handleChange = (e, field) => {
     setCommander({ ...commander, [field]: e.target.value });
   };
@@ -23,13 +41,18 @@ function CommanderForm(props) {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await createCommander(commander);
-      setCreated(true);
-      setCommander({
-        name: "",
-        username: "",
-        mainStack: "",
-      });
+      if (id === "new") {
+        await createCommander(commander);
+        setCreated(true);
+        setCommander({
+          name: "",
+          username: "",
+          mainStack: "",
+        });
+      } else {
+        await updateCommander(commander);
+        setUpdated(true);
+      }
     } catch (error) {
       if (error.response && error.response.status === 400)
         toast.error(error.response.data.detail);
@@ -48,7 +71,7 @@ function CommanderForm(props) {
 
   return (
     <Fragment>
-      {id === "new" && <h4>Nuevo Commander</h4>}
+      {id === "new" ? <h4>Nuevo Commander</h4> : <h4>Commander</h4>}
       <Form className="mx-auto">
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Nombre</Form.Label>
@@ -56,6 +79,7 @@ function CommanderForm(props) {
             placeholder="Carlo Gilmar"
             value={commander.name}
             onChange={(e) => handleChange(e, "name")}
+            disabled={id !== "new"}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="username">
@@ -64,6 +88,7 @@ function CommanderForm(props) {
             placeholder="carlogilmar"
             value={commander.username}
             onChange={(e) => handleChange(e, "username")}
+            disabled={id !== "new"}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="mainStack">
@@ -74,10 +99,20 @@ function CommanderForm(props) {
             onChange={(e) => handleChange(e, "mainStack")}
           />
         </Form.Group>
-        {id === "new" && (
+        {id === "new" ? (
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Agregar
           </Button>
+        ) : (
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
+            Actualizar
+          </Button>
+        )}
+        {updated && (
+          <Fragment>
+            <br />
+            <Form.Text>Explorer actualizado</Form.Text>
+          </Fragment>
         )}
       </Form>
     </Fragment>

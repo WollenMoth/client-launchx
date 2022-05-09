@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import { toast } from "react-toastify";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 import { getCommanders } from "../services/commanderService";
 
 function CommandersList(props) {
@@ -58,6 +60,13 @@ function CommandersList(props) {
                 <strong>Main Stack:</strong>
               </label>{" "}
               {currentCommander.mainStack}
+              <br />
+              <LinkContainer
+                to={`/commanders/${currentCommander.id}`}
+                className="mt-2"
+              >
+                <Button variant="primary">Editar</Button>
+              </LinkContainer>
             </div>
           </Fragment>
         ) : (
