@@ -15,3 +15,7 @@ export const createCommander = (commander) => {
 export const updateCommander = (commander) => {
   return http.put(`/commanders/${commander.id}`, commander);
 };
+
+export const deleteCommander = (id) => {
+  return http.delete(`/commanders/${id}`);
+};

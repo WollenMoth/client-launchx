@@ -42,4 +42,10 @@ describe("Unit Tests for CommanderForm", () => {
     const updateButton = screen.getByRole("button", { name: /Actualizar/i });
     expect(updateButton).toBeInTheDocument();
   });
+
+  test("renders delete button if editing a commander", () => {
+    renderInRoute(CommanderForm, "/commanders/:id", "/commanders/1");
+    const deleteButton = screen.getByRole("button", { name: /Eliminar/i });
+    expect(deleteButton).toBeInTheDocument();
+  });
 });

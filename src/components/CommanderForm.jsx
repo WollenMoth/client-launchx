@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./CommanderForm.css";
 import {
   createCommander,
+  deleteCommander,
   getCommander,
   updateCommander,
 } from "../services/commanderService";
@@ -59,6 +60,16 @@ function CommanderForm(props) {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await deleteCommander(id);
+      window.location = "/commanders";
+    } catch (error) {
+      if (error.response && error.response.status === 400)
+        toast.error(error.response.data.detail);
+    }
+  };
+
   if (created)
     return (
       <Fragment>
@@ -104,9 +115,14 @@ function CommanderForm(props) {
             Agregar
           </Button>
         ) : (
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Actualizar
-          </Button>
+          <Fragment>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              Actualizar
+            </Button>{" "}
+            <Button variant="danger" onClick={handleDelete}>
+              Eliminar
+            </Button>
+          </Fragment>
         )}
         {updated && (
           <Fragment>
