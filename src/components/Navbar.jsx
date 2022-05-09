@@ -20,6 +20,9 @@ function Navbar(props) {
             <LinkContainer to="/explorers/new">
               <Nav.Link>Agregar Explorer</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/commanders">
+              <Nav.Link>Commanders</Nav.Link>
+            </LinkContainer>
           </Nav>
         </BaseNavbar.Collapse>
       </Container>

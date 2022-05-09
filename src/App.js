@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import ExplorersList from "./components/ExplorersList";
 import ExplorerForm from "./components/ExplorerForm";
+import CommandersList from "./components/CommandersList";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/explorers" element={<ExplorersList />} />
           <Route path="/explorers/:id" element={<ExplorerForm />} />
+          <Route path="/commanders" element={<CommandersList />} />
+          <Route path="/" element={<CommandersList />} />
         </Routes>
       </Container>
     </BrowserRouter>
