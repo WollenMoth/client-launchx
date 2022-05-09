@@ -127,7 +127,7 @@ function CommanderForm(props) {
         {updated && (
           <Fragment>
             <br />
-            <Form.Text>Explorer actualizado</Form.Text>
+            <Form.Text>Mission Commander actualizado</Form.Text>
           </Fragment>
         )}
       </Form>
