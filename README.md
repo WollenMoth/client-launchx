@@ -24,6 +24,7 @@ Nos permite ver detalles de los commanders, editarlos, eliminarlos, y [crear nue
 
 - Axios: Para realizar las peticiones HTTP.
 - Bootstrap: Para dar estilos a la aplicación.
+- Node (v16.14.2): Para ejecutar el proyecto.
 - React: Para crear la aplicación.
 - React Bootstrap: Para utilizar los componentes de Bootstrap en la aplicación.
 - React Router: Para crear el router de la aplicación.
